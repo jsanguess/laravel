@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://font.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sass/estilos.css">
+    <title>AJAX</title>
 </head>
 <body>
-  <button onclick = "ejecutarAJAX()">click</button>  
-  <div id = "info"> </div>
-
-  <script type= "text/javascript">
-  
-  function ejecutarAJAX(){
-    var ajaxRequest = new XMLHttpRequest();
-    ajaxRequest.onreadystatechange = function(){
-      if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
-        document.getElementById("info").innerHTML = ajaxRequest.responseText;
-      }
+<button onclick="mostrarUsuarios()">Mostrar Usuarios</button>
+<div id="info"></div>
+<script type="text/javascript">
+var resultado =document.getElementById("info");
+function mostrarUsuarios(){
+    var xmlhttp= new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function(){
+        if (this.readyState ===  4 && this.status === 200){
+            resultado.innerHTML = this.responseText;
+        }
     }
-    ajaxRequest.open("GET","hola.txt",true);
-    ajaxRequest.send();
-  }
-  
-  </script>
+    xmlhttp.open("GET", "servidor.php", true);
+    xmlhttp.send();
+    
+}
 
+</script>
 </body>
 </html>

@@ -1,0 +1,18 @@
+table {
+  width: 30%;
+  border-collapse: collapse;
+}
+
+table, td, th {
+  border: 1px solid #cccccc;
+  padding: 5px;
+}
+
+table th, td th, th th {
+  text-align: left;
+}
+
+table tr:nth-child(even), td tr:nth-child(even), th tr:nth-child(even) {
+  background-color: #e8eced;
+}
+/*# sourceMappingURL=estilos.css.map */
