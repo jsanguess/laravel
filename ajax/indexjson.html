@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <button onclick = "ajax_get_json()">click</button>  
+  <div id = "info"></div>
+
+  <script type= "text/javascript">
+  var resultado = document.getElementById("info");
+  function ajax_get_json(){
+    var ajaxRequest = new XMLHttpRequest();
+    ajaxRequest.onreadystatechange = function(){
+      if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
+        var datos = JSON.parse(ajaxRequest.responseText);
+        if(resultado.innerHTML == ""){
+            // alert(ajaxRequest.responseText);
+            for(var i in datos){
+              resultado.innerHTML += "<h5>" + i + "<h5>";
+              var personaje = datos[i];
+              for (var j in personaje){
+                resultado.innerHTML += j + ": " + personaje[j] + "<br/>";
+              }
+            }
+            var edadmenor = encontrarEdadMenor(datos);
+            resultado.innerHTML += "<br/>" + "La edad menor es: " + edadmenor;
+        }
+      }
+    }
+    ajaxRequest.open("GET" ,"datos.json",true);
+    ajaxRequest.send();
+  }
+  function encontrarEdadMenor(objetoJSON){
+    var arreglo =[];
+    for (var i in objetoJSON){
+      var personaje = objetoJSON[i];
+      arreglo.push(personaje.edad);
+    }
+    var edadmenor = arreglo[0];
+    for (var j=0;j <arreglo.length; j++){
+      if(arreglo[j]<edadmenor){edadmenor=arreglo[j];}
+    }
+    return edadmenor;
+  }
+
+  </script>
+
+</body>
+</html>

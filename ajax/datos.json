@@ -1,0 +1,14 @@
+{
+    "Julieta":{
+        "nombre": "Nancy",
+        "apellido": "Ferrer",
+        "edad": 42,
+        "sexo": "mujer"
+    },
+    "Romeo":{
+        "nombre": "Jorge",
+        "apellido": "Sanguess",
+        "edad": 37,
+        "sexo": "hombre"
+    }
+}
