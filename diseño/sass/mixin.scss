@@ -1,0 +1,10 @@
+@mixin titulo ($color){
+    color: $color;
+    
+}
+.titulo1{
+    @include titulo(#24a19c);
+}
+.titulo2{
+    @include titulo(#6ebfb5)
+}
