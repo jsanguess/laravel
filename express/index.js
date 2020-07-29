@@ -29,6 +29,7 @@ const colors = require('colors');
 const server = express();
 const morgan =require('morgan');
 const path = require('path');
+const ejsLint = require('ejs-lint');
 
 // // agregando variable
 server.set('appName', 'Mi primer servidor');
@@ -37,10 +38,11 @@ const viewpath = (path.join(__dirname, './views'));
 server.set('views', viewpath);
 console.log(viewpath);
 server.set('view engine', 'ejs');
-
+ejsLint("index.ejs");
 
 // middlewares
 server.use(morgan('dev'));
+
 // server.use((req,res,next)=>{
 //     console.log('request url:' + req.url);
 //     next();
@@ -53,7 +55,7 @@ server.get('/', (req, res)=>{
     res.end();
 });
 server.get('/login', function(req, res){
-    res.render('index.ejs');
+    res.render('index');
     // res.end();
 });
 server.listen(3000, ()=> {
